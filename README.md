@@ -79,6 +79,7 @@
 * Should not have behavior
 * Domain events are subscribed to with a callback (lambda), or using pub sub interfaces, on a singleton or static event message bus
 * Domain events implemented this way can be subscribed to and handled in the aggregate root of the entity which raised the event, or in domain services, or even in UI/Application layer
+* Domain events are raised synchronously, if an asychronous task needs to be carried out, it can be done inside the event handler (async await pattern)
 * Outside applications can also be triggered by using a message queue or an enterprise service bus (ESB) inside the domain event handler
 ------------------------------------------------------------------------------
 ## Anti-corruption layer:
