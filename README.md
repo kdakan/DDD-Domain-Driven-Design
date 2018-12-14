@@ -46,7 +46,7 @@
 * Create, build aggregates and entities:
 * Static Create...() factory method on a model class is used to guard against construction of an invalid or incomplete model
 * Model class should not have a public default constructor (however if it is to be persisted, for Entity Framework to work, it can have a protected or privaye default constructor)
-
+------------------------------------------------------------------------------
 ## Aggregates:
 * Encapsulate and are composed of entity classes and value objects that change together in a business transaction
 * Aggregates are a transactional graph of model objects
