@@ -14,9 +14,9 @@
 - [ 12. Anti-corruption layer](#12-anti-corruption-layer)
 
 ## 1. Ubiquitous language:
-* Language and terms agreed upon by both business users and developers, within a bounded context
-* Entities with the same name in a different context can have different behavior and data
-* Bounded context helps in single responsibility for domain models
+- Language and terms agreed upon by both business users and developers, within a bounded context
+- Entities with the same name in a different context can have different behavior and data
+- Bounded context helps in single responsibility for domain models
 ------------------------------------------------------------------------------
 ## 2. Rich domain model:
 * Models (entities, value objects, aggregates) with rich behavior are preferred over anemic domain models (entities without behavior, which only keep data and represent the DB tables)
