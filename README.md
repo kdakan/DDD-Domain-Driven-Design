@@ -21,8 +21,8 @@
 ## 2. Rich domain model:
 * Models (entities, value objects, aggregates) with rich behavior are preferred over anemic domain models (entities without behavior, which only keep data and represent the DB tables)
 * Due to single responsibility principle (a class or method should have only one reason to change), non-cohesive behavior should be delegated to other classes (or even handled inside domain services) when necessary
-* model methods can also delegate the task to domain services by raising domain events
-------------------------------------------------------------------------------
+* Model methods can also delegate the task to domain services by raising domain events
+
 ## 3. Thin domain service working on rich domain models:
 * Domain services should not hold state (application services are not domain services, they are on the outer layer close to the UI layer, and can hold application/task state)
 * Domain services have very little behavior and only which does not fit cohesively in any domain model
@@ -37,7 +37,7 @@
 ## 5. Entities:
 * Live longer than the application, should endure restarts, and are persisted and read from data sources (DB, file system, network, etc.)
 * Have an id (preferably a GUID rather than a DB generated int because business transactions do not rely on persistence, can be persisted after other operations carried out in model's behavior)
-* Have entity semantics (equality and GetHashCode() defined by class name + id)
+* Have entity semantics (equality and `GetHashCode()` defined by class name + id)
 * Behavior in an entity mostly orchestrates value objects for a use case
 * Entity class should not have public property setters, setting a property should be a behavior method
 * Entities should not have bidirectional relations (depending on the bounded context, either an egg can have a chicken or a chicken can have eggs, but not both)
@@ -51,7 +51,7 @@
 * You can combine other value types that usually go together into a new value object type, like address (city, street, country, postal code) or ...range, or ...type
 * Prefer to put the behavior on value objects rather than on entities because value objects are immutable and do not have side effects (like changing their state or changing the state of any entity)
 * Can be part of an entity
-* Have value semantics (equality and GetHashCode() defined by property values)
+* Have value semantics (equality and `GetHashCode()` defined by property values)
 * Should be immutable, behaviors should not change the state of a value object, but can rather create a new value object (should act similar to C# strings, structs, ints, and other value types)
 * Can be persisted but only as part of an entity, not individually
 
@@ -73,7 +73,7 @@
 * Persist and read aggregates to/from DB or file system
 * Should have an interface close to a collection but should allow only the necessary operations needed for this aggregate (for example an aggregate might not need to be allowed to get updated or deleted)
 * Should not be generic (should be specific for the aggregate type)
-* Can have specific query methods if needed (like FindByName() etc.)
+* Can have specific query methods if needed (like `FindByName()` etc.)
 * Do not use lazy loading, instead use eager loading (use Include(...) in Entity Framework), else you can face "N+1 problem"s and excessive number of queries sent to DB
 * Can have specific methods that only load some of the columns from a table
 * Repository add/update/remove operation should commit to DB by itself (call Entity Framework ...Context.SaveChanges() at the end), because aggregate operations should be ACID transactions
